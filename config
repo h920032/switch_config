@@ -1,0 +1,268 @@
+# 
+version 7.1.045, Release 2422P01 
+# 
+sysname HPE 
+# 
+clock timezone Taipei add 08:00:00 
+clock protocol ntp 
+# 
+irf mac-address persistent timer 
+irf auto-update enable 
+undo irf link-delay 
+irf member 1 priority 1 
+irf mode normal 
+# 
+dot1x 
+# 
+rip 1 
+network 0.0.0.0 
+# 
+dhcp enable 
+# 
+dhcp snooping enable 
+# 
+dns server 8.8.8.8 
+# 
+mirroring-group 1 local 
+# 
+lldp global enable 
+# 
+system-working-mode StandardBridge 
+fan prefer-direction slot 1 port-to-power 
+password-recovery enable 
+# 
+vlan 1 
+# 
+vlan 2 to 3 
+# 
+stp global enable 
+# 
+dhcp server ip-pool 1 
+gateway-list 94.87.0.0 
+network 94.87.0.0 mask 255.255.255.0 
+address range 94.87.0.1 94.87.0.254 
+dns-list 8.8.8.8 
+# 
+dhcp server ip-pool tmanager 
+gateway-list 192.168.0.0 
+dns-list 8.8.8.8 
+static-bind ip-address 192.168.0.2 mask 255.255.255.0 hardware-address f428-5385-8ca9 
+static-bind ip-address 192.168.0.208 mask 255.255.255.0 hardware-address 705a-0f2f-987c 
+static-bind ip-address 192.168.0.210 mask 255.255.255.0 hardware-address f48e-38bc-3e4f 
+static-bind ip-address 192.168.0.211 mask 255.255.255.0 hardware-address dc4a-3e7d-074c 
+static-bind ip-address 192.168.0.212 mask 255.255.255.0 hardware-address 509a-4c2b-291b 
+# 
+interface NULL0 
+# 
+interface Vlan-interface1 
+ip address dhcp-alloc 
+# 
+interface Vlan-interface2 
+ip address 94.87.0.1 255.255.255.0 
+rip 1 enable 
+dhcp server apply ip-pool 1 
+# 
+interface Vlan-interface3 
+ip address 192.168.0.1 255.255.255.0 
+# 
+interface FortyGigE1/0/41 
+# 
+interface FortyGigE1/0/42 
+# 
+interface M-GigabitEthernet0/0/0 
+description Management_GigE 
+ip address 140.112.18.213 255.255.255.0 
+# 
+interface Ten-GigabitEthernet1/0/1 
+port access vlan 3 
+# 
+interface Ten-GigabitEthernet1/0/2 
+# 
+interface Ten-GigabitEthernet1/0/3 
+# 
+interface Ten-GigabitEthernet1/0/4 
+# 
+interface Ten-GigabitEthernet1/0/5 
+# 
+interface Ten-GigabitEthernet1/0/6 
+# 
+interface Ten-GigabitEthernet1/0/7 
+# 
+interface Ten-GigabitEthernet1/0/8 
+# 
+interface Ten-GigabitEthernet1/0/9 
+# 
+interface Ten-GigabitEthernet1/0/10 
+# 
+interface Ten-GigabitEthernet1/0/11 
+# 
+interface Ten-GigabitEthernet1/0/12 
+# 
+interface Ten-GigabitEthernet1/0/13 
+# 
+interface Ten-GigabitEthernet1/0/14 
+# 
+interface Ten-GigabitEthernet1/0/15 
+# 
+interface Ten-GigabitEthernet1/0/16 
+# 
+interface Ten-GigabitEthernet1/0/17 
+port access vlan 3 
+mirroring-group 1 monitor-port 
+dhcp snooping trust 
+# 
+interface Ten-GigabitEthernet1/0/18 
+port access vlan 3 
+mirroring-group 1 mirroring-port inbound 
+dhcp snooping trust 
+# 
+interface Ten-GigabitEthernet1/0/19 
+port access vlan 3 
+mirroring-group 1 mirroring-port inbound 
+dhcp snooping trust 
+# 
+interface Ten-GigabitEthernet1/0/20 
+port access vlan 3 
+mirroring-group 1 mirroring-port inbound 
+dhcp snooping trust 
+# 
+interface Ten-GigabitEthernet1/0/21 
+# 
+interface Ten-GigabitEthernet1/0/22 
+# 
+interface Ten-GigabitEthernet1/0/23 
+# 
+interface Ten-GigabitEthernet1/0/24 
+# 
+interface Ten-GigabitEthernet1/0/25 
+# 
+interface Ten-GigabitEthernet1/0/26 
+# 
+interface Ten-GigabitEthernet1/0/27 
+# 
+interface Ten-GigabitEthernet1/0/28 
+ip verify source mac-address 
+# 
+interface Ten-GigabitEthernet1/0/29 
+# 
+interface Ten-GigabitEthernet1/0/30 
+# 
+interface Ten-GigabitEthernet1/0/31 
+# 
+interface Ten-GigabitEthernet1/0/32 
+# 
+interface Ten-GigabitEthernet1/0/33 
+# 
+interface Ten-GigabitEthernet1/0/34 
+# 
+interface Ten-GigabitEthernet1/0/35 
+# 
+interface Ten-GigabitEthernet1/0/36 
+# 
+interface Ten-GigabitEthernet1/0/37 
+# 
+interface Ten-GigabitEthernet1/0/38 
+# 
+interface Ten-GigabitEthernet1/0/39 
+# 
+interface Ten-GigabitEthernet1/0/40 
+# 
+scheduler logfile size 16 
+# 
+line class aux 
+user-role network-admin 
+# 
+line class vty 
+user-role network-admin 
+user-role network-operator 
+set authentication password hash $h$6$8jVY3fXaFvmXW5kW$baGgSDFP6X0zhpuYVjA5++TK1GItwS8kdlHqte9Lmd/1OZdpr1PDfM6sOMWDB4jJnYmT0OHdFX6IB9rfmh6LjQ== 
+idle-timeout 30 0 
+# 
+line aux 0 
+user-role network-admin 
+# 
+line vty 0 4 
+authentication-mode scheme 
+user-role network-admin 
+user-role network-operator 
+protocol inbound ssh 
+idle-timeout 600 0 
+# 
+line vty 5 63 
+user-role network-operator 
+# 
+ip route-static 0.0.0.0 0 140.112.18.1 
+ip route-static 0.0.0.0 0 140.112.18.254 
+# 
+ssh server enable 
+ssh user manager service-type all authentication-type password 
+# 
+ntp-service enable 
+ntp-service source M-GigabitEthernet0/0/0 
+ntp-service unicast-server time.google.com 
+# 
+radius scheme system 
+user-name-format without-domain 
+# 
+domain system 
+# 
+aaa session-limit telnet 1 
+domain default enable system 
+# 
+role name level-0 
+description Predefined level-0 role 
+# 
+role name level-1 
+description Predefined level-1 role 
+# 
+role name level-2 
+description Predefined level-2 role 
+# 
+role name level-3 
+description Predefined level-3 role 
+# 
+role name level-4 
+description Predefined level-4 role 
+# 
+role name level-5 
+description Predefined level-5 role 
+# 
+role name level-6 
+description Predefined level-6 role 
+# 
+role name level-7 
+description Predefined level-7 role 
+# 
+role name level-8 
+description Predefined level-8 role 
+# 
+role name level-9 
+description Predefined level-9 role 
+# 
+role name level-10 
+description Predefined level-10 role 
+# 
+role name level-11 
+description Predefined level-11 role 
+# 
+role name level-12 
+description Predefined level-12 role 
+# 
+role name level-13 
+description Predefined level-13 role 
+# 
+role name level-14 
+description Predefined level-14 role 
+# 
+user-group system 
+# 
+local-user manager class manage 
+password hash $h$6$Vxb166crSrzAN9jU$nrtUEdaGr1LmUfMIPjAsXVcYTo61JivRbEPAwUOdDYWvIP2BL9KvrxPgo96XOsh/owNCU1aXwVYmSd0FWYPxmQ== 
+service-type ssh https 
+authorization-attribute user-role network-admin 
+authorization-attribute user-role network-operator 
+# 
+ip https enable 
+# 
+return 
+
